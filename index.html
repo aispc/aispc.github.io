@@ -10,6 +10,177 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			.timeline-container {
+				margin: 15px 0;
+			}
+			
+			.timeline {
+				position: relative;
+				padding-left: 30px;
+			}
+			
+			.timeline-item {
+				position: relative;
+				margin-bottom: 20px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+			}
+			
+			.timeline-item:hover {
+				transform: translateX(5px);
+			}
+			
+			.timeline-item:hover .timeline-details {
+				opacity: 1;
+				max-height: 50px;
+			}
+			
+			.timeline-marker {
+				position: absolute;
+				left: -37px;
+				top: 5px;
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background: #f56565;
+				border: 3px solid #fff;
+				box-shadow: 0 0 0 3px #f56565;
+				transition: all 0.3s ease;
+			}
+			
+			.timeline-marker.active {
+				background: #48bb78;
+				box-shadow: 0 0 0 3px #48bb78;
+				animation: pulse 2s infinite;
+			}
+			
+			.timeline-item:hover .timeline-marker {
+				transform: scale(1.3);
+				box-shadow: 0 0 0 6px rgba(245, 101, 101, 0.3);
+			}
+			
+			.timeline-content h4 {
+				margin: 0 0 3px 0;
+				color: #2d3748;
+				font-size: 1.1em;
+				font-weight: bold;
+			}
+			
+			.timeline-content p {
+				margin: 0 0 3px 0;
+				color: #4a5568;
+				font-weight: 600;
+			}
+			
+			.timeline-details {
+				color: #718096;
+				font-size: 0.9em;
+				opacity: 0;
+				max-height: 0;
+				overflow: hidden;
+				transition: all 0.3s ease;
+			}
+			
+			@keyframes pulse {
+				0% {
+					box-shadow: 0 0 0 3px #48bb78;
+				}
+				50% {
+					box-shadow: 0 0 0 6px rgba(72, 187, 120, 0.5);
+				}
+				100% {
+					box-shadow: 0 0 0 3px #48bb78;
+				}
+			}
+			
+			@media (max-width: 768px) {
+				.timeline {
+					padding-left: 25px;
+				}
+				
+				.timeline-marker {
+					left: -32px;
+				}
+			}
+			
+			.program-chairs-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 30px;
+				margin-top: 20px;
+			}
+			
+			.chair-card {
+				background: #fff;
+				border-radius: 10px;
+				padding: 25px;
+				text-align: center;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+				transition: all 0.3s ease;
+				border: 1px solid #e2e8f0;
+			}
+			
+			.chair-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+			}
+			
+			.chair-photo {
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				object-fit: cover;
+				margin: 0 auto 15px;
+				border: 4px solid #f56565;
+				transition: all 0.3s ease;
+			}
+			
+			.chair-card:hover .chair-photo {
+				border-color: #ed8936;
+				transform: scale(1.05);
+			}
+			
+			.chair-name {
+				font-size: 1.3em;
+				font-weight: bold;
+				color: #2d3748;
+				margin: 10px 0 5px 0;
+				line-height: 1.2;
+			}
+			
+			.chair-org {
+				color: #4a5568;
+				font-size: 1em;
+				margin-bottom: 15px;
+			}
+			
+			.chair-linkedin {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				color: #0077b5;
+				text-decoration: none;
+				font-size: 0.9em;
+				transition: color 0.3s ease;
+			}
+			
+			.chair-linkedin:hover {
+				color: #005885;
+				text-decoration: none;
+			}
+			
+			@media (max-width: 768px) {
+				.program-chairs-grid {
+					grid-template-columns: 1fr;
+					gap: 20px;
+				}
+				
+				.chair-card {
+					padding: 20px;
+				}
+			}
+		</style>
 	</head>
 
 
@@ -24,11 +195,14 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"> 
-										<strong> 2nd Workshop on AI-SPC </strong> @ HiPC 2025 
-										<embed src="images/hipc-logo.svg" width="90" height="30" type="image/svg+xml"
-										pluginspage="http://www.adobe.com/svg/viewer/install/" />
-									</a>
+									<div style="display: flex; align-items: center; border: none;">
+										<a href="index.html" style="text-decoration: none; border: none;">
+											<strong> 2nd Workshop on AI-SPC </strong> @ HiPC 2025 
+										</a>
+										<a href="https://www.hipc.org/" target="_blank" title="Visit HiPC 2025 Main Conference" style="margin-left: 10px; border: none; text-decoration: none; display: inline-block;">
+											<img src="images/hipc-logo.svg" width="90" height="30" alt="HiPC 2025 Logo" style="cursor: pointer;" />
+										</a>
+									</div>
 									
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -105,6 +279,18 @@
 
 							<!-- Section -->
 								<section>
+									<header class="major">
+										<h2>Previous Edition</h2>
+									</header>
+									<p>
+										The first edition of AI-SPC workshop was successfully held at HiPC 2024. 
+										You can access the proceedings and papers from the inaugural workshop at the 
+										<a href="https://ieeexplore.ieee.org/document/10898844" target="_blank">IEEE Xplore Digital Library</a>.
+									</p>
+								</section>
+
+							<!-- Section -->
+								<section>
 									<header class="major" id="cfp">
 										<h2>Call for Papers</h2>
 									</header>
@@ -154,18 +340,63 @@
 											<!-- <span class="icon solid fa-paper-plane"></span> -->
 											<div class="content">
 												<h3>Important Dates and Submission Link</h3>
-												<p>
-													<ul>
-														<strong>
-													<li> Submission site open: Sep 1, 2025 </li> 
-													<li> Paper submissions due: Oct 1, 2025 </li>
-													<li> Author notification: November 1, 2025 </li>
-													<li> Advance Program: November 8, 2025 </li>
-													<li> Camera-ready version due: November 15, 2025 </li>
-													<li> Workshop: December 17, 2025 </li>
-														</strong>
-													</ul>
-												</p>
+												<div class="timeline-container">
+													<div class="timeline">
+														<div class="timeline-item" data-date="Sep 1, 2025">
+															<div class="timeline-marker"></div>
+															<div class="timeline-content">
+																<h4>Submission Site Opens</h4>
+																<p>September 1, 2025</p>
+																<div class="timeline-details">Paper submission system becomes available</div>
+															</div>
+														</div>
+														
+														<div class="timeline-item" data-date="Oct 1, 2025">
+															<div class="timeline-marker"></div>
+															<div class="timeline-content">
+																<h4>Paper Submissions Due</h4>
+																<p>October 1, 2025</p>
+																<div class="timeline-details">Final deadline for paper submissions</div>
+															</div>
+														</div>
+														
+														<div class="timeline-item" data-date="Nov 1, 2025">
+															<div class="timeline-marker"></div>
+															<div class="timeline-content">
+																<h4>Author Notification</h4>
+																<p>November 1, 2025</p>
+																<div class="timeline-details">Authors notified of acceptance status</div>
+															</div>
+														</div>
+														
+														<div class="timeline-item" data-date="Nov 8, 2025">
+															<div class="timeline-marker"></div>
+															<div class="timeline-content">
+																<h4>Advance Program</h4>
+																<p>November 8, 2025</p>
+																<div class="timeline-details">Workshop program published</div>
+															</div>
+														</div>
+														
+														<div class="timeline-item" data-date="Nov 15, 2025">
+															<div class="timeline-marker"></div>
+															<div class="timeline-content">
+																<h4>Camera-Ready Due</h4>
+																<p>November 15, 2025</p>
+																<div class="timeline-details">Final camera-ready versions due</div>
+															</div>
+														</div>
+														
+														<div class="timeline-item" data-date="Dec 17, 2025">
+															<div class="timeline-marker active"></div>
+															<div class="timeline-content">
+																<h4>Workshop Day</h4>
+																<p>December 17, 2025</p>
+																<div class="timeline-details">AI-SPC 2025 Workshop at HiPC</div>
+															</div>
+														</div>
+													</div>
+												</div>
 												<p> <strong> Papers are to be submitted using EasyChair Conference Management <br />
 													website link: <a href="https://easychair.org/conferences/directory?a=34912354" target="_blank">
 														AI-SPC 2025 <br /> </a>
@@ -183,23 +414,36 @@
 									<header class="major" id="progchair">
 										<h2>Program Chairs</h2>
 									</header>
-									<div class="posts">
-										<article>
-											<a href="https://www.linkedin.com/in/subhasisbanerjee/" class="image" target="_blank"><img src="images/subhasis_photo.jpg" alt="" /></a>
-											<a href="https://www.linkedin.com/in/subhasisbanerjee/"  class="icon brands fa-linkedin" target="_blank"> 
-												<span class="label">LinkedIn</span> <h3>Subhasis Banerjee, Shell</h3> </a>
-										</article>
-										<article>
-											<a href="https://www.linkedin.com/in/hprao/" class="image" target="_blank"><img src="images/Pradeep_photo.jpg" alt="" /></a>
-											<a href="https://www.linkedin.com/in/hprao/"  class="icon brands fa-linkedin" target="_blank"> 
-												<span class="label">LinkedIn</span> <h3>Pradeep Rao, AMD</h3> </a>
-										</article>
-										<article>
-											<a href="https://www.linkedin.com/in/aniruddhapanda/" class="image" target="_blank"><img src="images/Aniruddha_photo.jpg" alt="" /></a>
-											<a href="https://www.linkedin.com/in/aniruddhapanda/"  class="icon brands fa-linkedin" target="_blank">  
-												<span class="label">LinkedIn</span> <h3>Aniruddha Panda, Shell</h3> </a>
-										</article>
+									<div class="program-chairs-grid">
+										<div class="chair-card">
+											<img src="images/subhasis_photo.jpg" alt="Subhasis Banerjee" class="chair-photo" />
+											<div class="chair-name">Subhasis Banerjee</div>
+											<div class="chair-org">Shell</div>
+											<a href="https://www.linkedin.com/in/subhasisbanerjee/" target="_blank" class="chair-linkedin">
+												<i class="fab fa-linkedin"></i>
+												View LinkedIn Profile
+											</a>
+										</div>
 										
+										<div class="chair-card">
+											<img src="images/Pradeep_photo.jpg" alt="Pradeep Rao" class="chair-photo" />
+											<div class="chair-name">Pradeep Rao</div>
+											<div class="chair-org">AMD</div>
+											<a href="https://www.linkedin.com/in/hprao/" target="_blank" class="chair-linkedin">
+												<i class="fab fa-linkedin"></i>
+												View LinkedIn Profile
+											</a>
+										</div>
+										
+										<div class="chair-card">
+											<img src="images/Aniruddha_photo.jpg" alt="Aniruddha Panda" class="chair-photo" />
+											<div class="chair-name">Aniruddha Panda</div>
+											<div class="chair-org">Shell</div>
+											<a href="https://www.linkedin.com/in/aniruddhapanda/" target="_blank" class="chair-linkedin">
+												<i class="fab fa-linkedin"></i>
+												View LinkedIn Profile
+											</a>
+										</div>
 									</div>
 								</section>
 								<section>
@@ -209,10 +453,63 @@
 										<li> <h3> Angshul Majumdar, TCG Crest </h3> </li>
 										<li> <h3> Suman Roy, Oracle </h3> </li>
 										<li> <h3> Kalyan Venkata T., IIT Ropar </h3> </li>
-										<li> <h3> Sooraj Pawar, Shell </h3> </li>
+										<li> <h3> Suraj Pawar, Shell </h3> </li>
 										<li> <h3> Sourangshu Bhattacharya, IIT Kharagpur </h3> </li>
 										<li> <h3> Saumil Merchant, Shell </h3> </li>
 									</ul>
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Workshop Program</h2>
+									</header>
+									<p><strong>Note:</strong> This is a tentative program and may be subject to changes based on the final number of accepted papers.</p>
+									
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Session</th>
+													<th>Duration</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Introduction / Opening Remarks</td>
+													<td>5 min</td>
+												</tr>
+												<tr>
+													<td>Keynote Talk</td>
+													<td>45 min</td>
+												</tr>
+												<tr>
+													<td>Technical Paper Presentations (Session 1)</td>
+													<td>40 min</td>
+												</tr>
+												<tr>
+													<td>Break</td>
+													<td>30 min</td>
+												</tr>
+												<tr>
+													<td>Technical Paper Presentations (Session 2)</td>
+													<td>60 min</td>
+												</tr>
+												<tr>
+													<td>Panel Discussion</td>
+													<td>30 min</td>
+												</tr>
+												<tr>
+													<td>Close Out</td>
+													<td>5 min</td>
+												</tr>
+												<tr style="font-weight: bold;">
+													<td>Total Workshop Duration</td>
+													<td>215 min (approx. 3.5 hours)</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
 								</section>
                                 
 								<section>
