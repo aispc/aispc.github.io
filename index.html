@@ -380,6 +380,96 @@
 				}
 				
 			}
+
+			/* Technical Program Committee Card Styles */
+			.tpc-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 20px;
+				margin-top: 30px;
+			}
+
+			.tpc-card {
+				background: #ffffff;
+				border-radius: 12px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+				transition: all 0.3s ease;
+				border: 1px solid #e2e8f0;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.tpc-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+				border-color: #f56565;
+			}
+
+			.tpc-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 4px;
+				background: linear-gradient(90deg, #f56565, #ed8936);
+				border-radius: 12px 12px 0 0;
+			}
+
+			.tpc-card-content {
+				padding: 25px;
+				text-align: center;
+			}
+
+			.tpc-card h3 {
+				margin: 0 0 8px 0;
+				color: #2d3748;
+				font-size: 1.2em;
+				font-weight: 600;
+				line-height: 1.3;
+			}
+
+			.tpc-affiliation {
+				margin: 0;
+				color: #718096;
+				font-size: 0.95em;
+				font-weight: 500;
+				font-style: normal;
+			}
+
+			@media (max-width: 768px) {
+				.tpc-grid {
+					grid-template-columns: 1fr;
+					gap: 15px;
+				}
+				
+				.tpc-card {
+					margin: 0 10px;
+				}
+				
+				.tpc-card-content {
+					padding: 20px;
+				}
+				
+				.tpc-card h3 {
+					font-size: 1.1em;
+				}
+			}
+
+			@media (max-width: 480px) {
+				.tpc-grid {
+					grid-template-columns: 1fr;
+					gap: 12px;
+				}
+				
+				.tpc-card-content {
+					padding: 18px;
+				}
+				
+				.tpc-card h3 {
+					font-size: 1em;
+				}
+			}
 		</style>
 	</head>
 
@@ -668,14 +758,50 @@
 								<section>
 									<header class="major" id="tpc"><h2> Technical Program Committee</h2>
 									</header>
-									<ul> 
-										<li> <h3> Angshul Majumdar, TCG Crest </h3> </li>
-										<li> <h3> Kalyan Venkata T., IIT Ropar </h3> </li>
-										<li> <h3> Suraj Pawar, Shell </h3> </li>
-										<li> <h3> Saumil Merchant, Shell </h3> </li>
-										<li> <h3> Biswajit Mishra, Cerebras </h3> </li>
-										<li> <h3> Arun C Ramachandran, AMD </h3> </li>
-									</ul>
+									<div class="tpc-grid">
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Angshul Majumdar</h3>
+												<p class="tpc-affiliation">TCG Crest</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Kalyan Venkata T.</h3>
+												<p class="tpc-affiliation">IIT Ropar</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Suraj Pawar</h3>
+												<p class="tpc-affiliation">Shell</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Saumil Merchant</h3>
+												<p class="tpc-affiliation">Shell</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Biswajit Mishra</h3>
+												<p class="tpc-affiliation">Cerebras</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Arun C Ramachandran</h3>
+												<p class="tpc-affiliation">AMD</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Sribharath Kainkaryam</h3>
+												<p class="tpc-affiliation">NVIDIA</p>
+											</div>
+										</div>
+									</div>
 								</section>
 
 							<!-- Section -->
