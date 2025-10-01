@@ -470,6 +470,11 @@
 					font-size: 1em;
 				}
 			}
+
+			@keyframes flash {
+				0%, 100% { opacity: 1; }
+				50% { opacity: 0.4; }
+			}
 		</style>
 	</head>
 
@@ -482,6 +487,11 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
+
+							<!-- Deadline Extension Notice -->
+							<div style="background-color: #ff6b6b; color: white; padding: 12px; text-align: center; font-weight: bold; margin-bottom: 20px; animation: flash 1.5s infinite;">
+								🔔 DEADLINE EXTENDED: Paper submissions now due October 15, 2025!
+							</div>
 
 							<!-- Header -->
 								<header id="header">
@@ -664,7 +674,7 @@
 															<div class="timeline-marker"></div>
 															<div class="timeline-content">
 																<h4>Paper Submissions Due</h4>
-																<p>October 1, 2025</p>
+																<p><s>October 1, 2025</s> <strong>October 15, 2025 (Extended)</strong></p>
 																<div class="timeline-details">Final deadline for paper submissions</div>
 															</div>
 														</div>
