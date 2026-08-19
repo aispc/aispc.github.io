@@ -1,0 +1,891 @@
+<!DOCTYPE HTML>
+<!--
+    Editorial by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+<head>
+    <title>AI for Scientific and General Purpose Computing (AI-SPC)</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        :root {
+            --bg: #07111f;
+            --bg-soft: #0b1728;
+            --surface: #0e1a2b;
+            --surface-2: #13243a;
+            --surface-3: #182d48;
+            --blue: #4f9cf9;
+            --cyan: #22d3ee;
+            --green: #00e5a8;
+            --text: #f5f7fa;
+            --text-soft: #e8eef7;
+            --muted: #b7c4d7;
+            --muted-2: #8fa3bd;
+            --border: rgba(255, 255, 255, 0.10);
+            --border-strong: rgba(34, 211, 238, 0.35);
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+            --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.24);
+            --radius: 24px;
+            --radius-sm: 16px;
+            --max: 1240px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            color: var(--text-soft);
+            font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.75;
+            background:
+                radial-gradient(circle at 78% 5%, rgba(79, 156, 249, 0.22), transparent 28rem),
+                radial-gradient(circle at 12% 20%, rgba(34, 211, 238, 0.14), transparent 24rem),
+                linear-gradient(180deg, var(--bg), #050c16 85%);
+        }
+
+        a { color: var(--cyan); text-decoration: none; }
+        a:hover { color: var(--green); }
+        img { max-width: 100%; display: block; }
+        p { color: var(--muted); margin: 0 0 1.1rem; }
+        ul { margin: 0; padding-left: 1.25rem; color: var(--muted); }
+        li { margin: 0.65rem 0; }
+        strong { color: var(--text); }
+
+        .container {
+            width: min(var(--max), calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .navbar {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 1000;
+            background: rgba(7, 17, 31, 0.78);
+            backdrop-filter: blur(22px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            width: min(var(--max), calc(100% - 40px));
+            height: 78px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            min-width: max-content;
+        }
+
+        .brand-mark {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+            letter-spacing: -0.08em;
+            color: var(--bg);
+            background: linear-gradient(135deg, var(--cyan), var(--green));
+            box-shadow: 0 0 32px rgba(34, 211, 238, 0.35);
+        }
+
+        .brand-text {
+            display: grid;
+            line-height: 1.1;
+        }
+
+        .brand-text a {
+            color: var(--text);
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .brand-text small {
+            color: var(--muted-2);
+            font-size: 0.76rem;
+            margin-top: 0.12rem;
+        }
+
+        .hipc-link { border: 0; opacity: 0.92; }
+        .hipc-link img { width: 92px; height: 31px; object-fit: contain; }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-weight: 750;
+            font-size: 0.88rem;
+            padding: 0.48rem 0.7rem;
+            border-radius: 999px;
+            transition: all 0.18s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--bg);
+            background: linear-gradient(135deg, var(--cyan), var(--green));
+            transform: translateY(-1px);
+        }
+
+        .hero {
+            position: relative;
+            min-height: 94vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 130px 0 80px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(7, 17, 31, 0.92), rgba(7, 17, 31, 0.78), rgba(7, 17, 31, 0.92)),
+                url("images/ai_image1.jpg") center right / cover no-repeat;
+            opacity: 0.78;
+            z-index: -2;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 170px;
+            background: linear-gradient(180deg, transparent, var(--bg));
+            z-index: -1;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) 0.85fr;
+            gap: 2.2rem;
+            align-items: end;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.48rem 0.78rem;
+            border: 1px solid var(--border-strong);
+            border-radius: 999px;
+            color: var(--cyan);
+            background: rgba(14, 26, 43, 0.72);
+            font-weight: 850;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            margin-bottom: 1.3rem;
+        }
+
+        h1 {
+            margin: 0;
+            max-width: 900px;
+            font-size: clamp(3rem, 7vw, 6.4rem);
+            line-height: 0.93;
+            letter-spacing: -0.07em;
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            color: var(--muted);
+            font-size: clamp(1.06rem, 2vw, 1.35rem);
+            max-width: 760px;
+            margin-top: 1.35rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            border-radius: 999px;
+            padding: 0.85rem 1.15rem;
+            min-height: 46px;
+            font-weight: 850;
+            border: 1px solid var(--border);
+        }
+
+        .btn-primary {
+            color: var(--bg);
+            background: linear-gradient(135deg, var(--cyan), var(--green));
+            box-shadow: 0 0 40px rgba(34, 211, 238, 0.22);
+        }
+
+        .btn-secondary {
+            color: var(--text);
+            background: rgba(14, 26, 43, 0.72);
+            border-color: var(--border-strong);
+        }
+
+        .hero-panel {
+            background: rgba(14, 26, 43, 0.76);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.35rem;
+        }
+
+        .hero-panel h2 {
+            font-size: 1.22rem;
+            line-height: 1.2;
+            margin: 0 0 1rem;
+        }
+
+        .mini-date-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .mini-date {
+            display: grid;
+            grid-template-columns: 82px 1fr;
+            gap: 0.8rem;
+            align-items: center;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .mini-date .day {
+            color: var(--cyan);
+            font-weight: 950;
+            font-size: 1.35rem;
+            line-height: 1;
+        }
+
+        .mini-date .month {
+            color: var(--muted-2);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .section {
+            padding: 92px 0;
+            scroll-margin-top: 90px;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .kicker {
+            color: var(--cyan);
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-weight: 900;
+            margin-bottom: 0.65rem;
+        }
+
+        h2 {
+            margin: 0;
+            color: var(--text);
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            line-height: 1;
+            letter-spacing: -0.05em;
+        }
+
+        h3 {
+            margin: 0 0 0.7rem;
+            color: var(--text);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .section-card,
+        .glass-card {
+            background: linear-gradient(135deg, rgba(14, 26, 43, 0.94), rgba(19, 36, 58, 0.86));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .section-card { padding: clamp(1.35rem, 3vw, 2.35rem); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 0.76fr);
+            gap: 1.4rem;
+            align-items: stretch;
+        }
+
+        .about-text p { font-size: 1.04rem; }
+
+        .goals-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .goals-card li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin: 0 0 1rem;
+        }
+
+        .goals-card li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.55rem;
+            width: 0.64rem;
+            height: 0.64rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue), var(--cyan));
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.35);
+        }
+
+        .previous-card {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1.3rem;
+            align-items: center;
+        }
+
+        .dates-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .date-card {
+            position: relative;
+            overflow: hidden;
+            padding: 1.25rem;
+            min-height: 165px;
+            background: linear-gradient(145deg, rgba(19, 36, 58, 0.96), rgba(14, 26, 43, 0.96));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .date-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -40px -55px auto;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.18), transparent 65%);
+        }
+
+        .date-month {
+            color: var(--cyan);
+            font-size: 0.74rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .date-number {
+            color: var(--text);
+            font-size: 2.7rem;
+            line-height: 1;
+            font-weight: 950;
+            letter-spacing: -0.06em;
+            margin: 0.65rem 0;
+        }
+
+        .date-event { color: var(--muted); font-weight: 750; line-height: 1.3; }
+        .date-details { color: var(--muted-2); font-size: 0.85rem; margin-top: 0.5rem; }
+
+        .cfp-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 0.62fr);
+            gap: 1.4rem;
+            align-items: start;
+        }
+
+        .track-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .track-card {
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            transition: all 0.22s ease;
+        }
+
+        .track-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-strong);
+            background: rgba(34, 211, 238, 0.055);
+        }
+
+        .track-card p { margin-bottom: 0; }
+
+        .submission-box {
+            position: sticky;
+            top: 98px;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, rgba(0, 229, 168, 0.10), rgba(79, 156, 249, 0.10));
+            border: 1px solid rgba(0, 229, 168, 0.20);
+            border-radius: var(--radius);
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            margin-top: 0.85rem;
+        }
+
+        .contact-list a {
+            display: inline-flex;
+            padding: 0.68rem 0.82rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.055);
+            border: 1px solid var(--border);
+            width: fit-content;
+        }
+
+        .chairs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.2rem;
+        }
+
+        .chair-card {
+            padding: 1.2rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .chair-photo-wrap {
+            width: 172px;
+            height: 172px;
+            margin: 0 auto 1.1rem;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--cyan), var(--blue), var(--green));
+            box-shadow: 0 0 36px rgba(34, 211, 238, 0.20);
+        }
+
+        .chair-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--surface);
+        }
+
+        .chair-name {
+            color: var(--text);
+            font-size: 1.25rem;
+            font-weight: 900;
+        }
+
+        .chair-org { color: var(--muted); font-weight: 750; margin: 0.2rem 0 0.8rem; }
+
+        .linkedin-link {
+            display: inline-flex;
+            border-radius: 999px;
+            padding: 0.58rem 0.85rem;
+            color: var(--cyan);
+            background: rgba(34, 211, 238, 0.08);
+            border: 1px solid rgba(34, 211, 238, 0.18);
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .tpc-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.85rem;
+        }
+
+        .tpc-card {
+            padding: 1rem;
+            min-height: 118px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+        }
+
+        .tpc-card h3 { font-size: 1rem; margin-bottom: 0.28rem; }
+        .tpc-card p { margin: 0; color: var(--muted-2); font-weight: 750; }
+
+        .program-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, rgba(79, 156, 249, 0.13), rgba(34, 211, 238, 0.08));
+            border-color: rgba(79, 156, 249, 0.24);
+        }
+
+        .tbd-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.15rem;
+            min-width: 110px;
+            color: var(--bg);
+            font-weight: 950;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--cyan), var(--green));
+        }
+
+        .keynote-card {
+            display: grid;
+            grid-template-columns: 340px minmax(0, 1fr);
+            gap: 2rem;
+            align-items: center;
+            padding: clamp(1.35rem, 3vw, 2.1rem);
+            background: linear-gradient(135deg, rgba(14, 26, 43, 0.96), rgba(19, 36, 58, 0.92));
+        }
+
+        .keynote-card img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 22px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .keynote-name {
+            display: inline-block;
+            color: var(--text);
+            font-size: clamp(1.55rem, 3vw, 2.2rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            padding: 52px 0;
+            background: #050c16;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .footer-title { color: var(--text); font-weight: 900; }
+        .footer p { margin-bottom: 0; }
+
+        .social-labels {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .social-labels a {
+            padding: 0.48rem 0.72rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        @media (max-width: 1120px) {
+            .hero-grid,
+            .about-grid,
+            .cfp-layout,
+            .keynote-card {
+                grid-template-columns: 1fr;
+            }
+            .dates-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .tpc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .submission-box { position: static; }
+        }
+
+        @media (max-width: 820px) {
+            .nav-inner {
+                height: auto;
+                padding: 0.82rem 0;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .nav-links { justify-content: flex-start; }
+            .hero { padding-top: 170px; }
+            .track-grid,
+            .chairs-grid { grid-template-columns: 1fr; }
+            .dates-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .tpc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .previous-card,
+            .program-card,
+            .footer-grid { grid-template-columns: 1fr; display: grid; }
+        }
+
+        @media (max-width: 560px) {
+            .container,
+            .nav-inner { width: min(var(--max), calc(100% - 28px)); }
+            .hero { padding-top: 195px; }
+            .dates-grid,
+            .tpc-grid { grid-template-columns: 1fr; }
+            .mini-date { grid-template-columns: 64px 1fr; }
+            .section { padding: 68px 0; }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-inner">
+            <div class="brand">
+                <a href="index.html" class="brand-mark" aria-label="AI-SPC home">AISPC</a>
+                <div class="brand-text">
+                    <a href="index.html"><strong>3rd Workshop on AI-SPC</strong> @ HiPC 2026</a>
+                    <small>AI for Scientific and General Purpose Computing</small>
+                </div>
+                <a href="https://www.hipc.org/" target="_blank" title="Visit HiPC 2026 Main Conference" class="hipc-link">
+                    <img src="images/hipc-logo.svg" width="90" height="30" alt="HiPC 2025 Logo" />
+                </a>
+            </div>
+            <nav class="nav-links" aria-label="Primary navigation">
+                <a href="#banner">About</a>
+                <a href="#previous">Previous Edition</a>
+                <a href="#cfp">Call for Papers</a>
+                <a href="#program">Program</a>
+                <a href="#progchair">Program Chairs</a>
+                <a href="#advprog">Keynote Speaker</a>
+                <a href="#tpc">TPC</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="banner" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <!--
+                    <div class="eyebrow">3rd Workshop on AI-SPC @ HiPC 2026</div>
+                    -->
+                    <h1>AI for Scientific and General Purpose Computing<br />AI-SPC</h1>
+                    <p class="hero-subtitle"><strong>About the Workshop</strong></p>
+                    <div class="hero-actions">
+                        <a href="#cfp" class="btn btn-primary">Call for Papers</a>
+                        <a href="#dates" class="btn btn-secondary">Important Dates and Submission Link</a>
+                    </div>
+                </div>
+                <aside class="hero-panel" aria-labelledby="hero-dates-title">
+                    <h2 id="hero-dates-title">Important Dates and Submission Link</h2>
+                    <div class="mini-date-list">
+                        <div class="mini-date"><div><div class="month">September</div><div class="day">01</div></div><strong>Submission Site Opens</strong></div>
+                        <div class="mini-date"><div><div class="month">October</div><div class="day">15</div></div><strong>Paper Submissions Due</strong></div>
+                        <div class="mini-date"><div><div class="month">November</div><div class="day">01</div></div><strong>Author Notification</strong></div>
+                        <div class="mini-date"><div><div class="month">December</div><div class="day">16</div></div><strong>Workshop Day</strong></div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container about-grid">
+                <article class="section-card about-text">
+                    <div class="kicker">Workshop Overview</div>
+                    <h2>About the Workshop</h2>
+                    <p>Recent advances in AI have influenced nearly all domains of science and engineering research. The spectrum is surprisingly broad: starting from traditional scientific simulation, natural language processing, material science, medical diagnostics, drug discovery and last but not the least, computer software and systems. In its second iteration, our focus remains largely in the same direction, that is, to explore the new-found synergies between High Performance Computing (HPC) and Artificial Intelligence (AI), emphasizing the advancements, challenges and future directions in two domains that have long shared symbiotic relationship - scientific computing and computer systems. Participants will engage in discussions about state-of-the art technologies, share experiences and foster collaborations to drive innovation in these interdisciplinary fields.</p>
+                </article>
+                <article class="section-card goals-card">
+                    <div class="kicker">Goals</div>
+                    <h2>The goals of this workshop is to:</h2>
+                    <ul>
+                        <li>Provide a platform to bring together academic researchers and industry practitioners in the areas of HPC, Software &amp; Systems evaluating the use of AI/ML to foster dialogue and solve problems in these domains.</li>
+                        <li>Highlight cutting-edge research and practical applications that leverage the intersection of HPC, Systems and AI.</li>
+                        <li>To provide a platform for sharing knowledge about new tools, techniques, and best practices.</li>
+                        <li>Discuss the challenges in integrating HPC with AI and propose potential solutions.</li>
+                        <li>To identify future research directions and encourage collaborative efforts to advance the field.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="previous" class="section">
+            <div class="container">
+                <div class="section-card previous-card">
+                    <div>
+                        <div class="kicker">Previous Edition</div>
+                        <h2>Previous Edition</h2>
+                        <p>The second edition of AI-SPC workshop was successfully held at HiPC 2025. You can access the proceedings and papers from the inaugural workshop at the IEEE Xplore Digital Library.</p>
+                    </div>
+                    <a href="https://ieeexplore.ieee.org/document/11459229" target="_blank" class="btn btn-primary">IEEE Xplore Digital Library</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="dates" class="section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <div class="kicker">Timeline</div>
+                        <h2>Important Dates and Submission Link</h2>
+                    </div>
+                </div>
+                <div class="dates-grid">
+                    <div class="date-card"><div class="date-month">September</div><div class="date-number">01</div><div class="date-event">Submission Site Opens</div><div class="date-details">Paper submission system becomes available</div></div>
+                    <div class="date-card"><div class="date-month">October</div><div class="date-number">15</div><div class="date-event">Paper Submissions Due</div><div class="date-details">Final deadline for paper submissions</div></div>
+                    <div class="date-card"><div class="date-month">November</div><div class="date-number">01</div><div class="date-event">Author Notification</div><div class="date-details">Authors notified of acceptance status</div></div>
+                    <div class="date-card"><div class="date-month">November</div><div class="date-number">08</div><div class="date-event">Advance Program</div><div class="date-details">Workshop program published</div></div>
+                    <div class="date-card"><div class="date-month">November</div><div class="date-number">15</div><div class="date-event">Camera-Ready Due</div><div class="date-details">Final camera-ready versions due</div></div>
+                    <div class="date-card"><div class="date-month">December</div><div class="date-number">16</div><div class="date-event">Workshop Day</div><div class="date-details">AI-SPC 2026 Workshop at HiPC</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cfp" class="section">
+            <div class="container cfp-layout">
+                <article class="section-card">
+                    <div class="kicker">Call for Papers</div>
+                    <h2>Call for Papers</h2>
+                    <h3>What to Submit</h3>
+                    <p>The workshop invites submissions (though not limited to) in the following areas:</p>
+                    <div class="track-grid">
+                        <div class="track-card"><h3>State of the Art in HPC &amp; AI Integration</h3><p>Overview of current technologies and methodologies where HPC meets AI. Case studies demonstrating successful integration in scientific research and industry.</p></div>
+                        <div class="track-card"><h3>HPC for AI: Accelerating Learning and Inference</h3><p>Utilizing HPC to accelerate AI training and inference times. Benchmarking performance gains in AI applications through HPC.</p></div>
+                        <div class="track-card"><h3>Large scale I/O and Analytics</h3><p>Challenges in handling big data with HPC and AI. Techniques for efficient data storage, retrieval, and processing at scale.</p></div>
+                        <div class="track-card"><h3>HPC-AI for Scientific Discovery</h3><p>Applications of AI for simulation and modeling in scientific domains such as computational fluid dynamics, climate modeling, astrophysics, and bioinformatics. Leveraging HPC for the larger areas of Scientific Machine Learning (neural network-driven scientific research). Few such focus areas are: Physics Informed Neural Network (PINN), AI assisted Data Driven Weather Modelling.</p></div>
+                        <div class="track-card"><h3>Future Directions and Emerging Technologies, Hardware and Software Design</h3><p>Machine learning in compiler optimization, auto tuning, software &amp; hardware performance optimization. Discussion on the upcoming trends at the nexus of HPC and AI. Anticipating future challenges and opportunities in hardware and software developments.</p></div>
+                    </div>
+                </article>
+                <aside class="submission-box">
+                    <h3>Submission Guidelines:</h3>
+                    <p><strong>Workshop will accept unpublished manuscripts and should not be under review for a different conference / journal / workshop. The manuscript must not exceed four (4) pages in single- spaced, 10pt, double column, IEEE conference style format. One (1) additional page can be added only for the References. The submission should include title, author, affiliations, and email address of the communicating author. The workshop will follow single-blind review process by the Program Committee to review all submitted manuscripts. Manuscript submission details will be shared soon through this website.</strong></p>
+                    <p><strong>For any question feel free to reach out to</strong></p>
+                    <div class="contact-list">
+                        <a href="mailto:subhasis.banerjee@shell.com">subhasis.banerjee@shell.com</a>
+                        <strong>OR</strong>
+                        <a href="mailto:aniruddha.panda@shell.com">aniruddha.panda@shell.com</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="progchair" class="section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <div class="kicker">Program Chairs</div>
+                        <h2>Program Chairs</h2>
+                    </div>
+                </div>
+                <div class="chairs-grid">
+                    <article class="section-card chair-card">
+                        <div class="chair-photo-wrap"><img src="images/subhasis_photo.jpg" alt="Subhasis Banerjee" /></div>
+                        <div class="chair-name">Subhasis Banerjee</div>
+                        <div class="chair-org">Shell</div>
+                        <a href="https://www.linkedin.com/in/subhasisbanerjee/" target="_blank" class="linkedin-link">View LinkedIn Profile</a>
+                    </article>
+                    <article class="section-card chair-card">
+                        <div class="chair-photo-wrap"><img src="images/Pradeep_photo.jpg" alt="Pradeep Rao" /></div>
+                        <div class="chair-name">Pradeep Rao</div>
+                        <div class="chair-org">AMD</div>
+                        <a href="https://www.linkedin.com/in/hprao/" target="_blank" class="linkedin-link">View LinkedIn Profile</a>
+                    </article>
+                    <article class="section-card chair-card">
+                        <div class="chair-photo-wrap"><img src="images/Aniruddha_photo.jpg" alt="Aniruddha Panda" /></div>
+                        <div class="chair-name">Aniruddha Panda</div>
+                        <div class="chair-org">Shell</div>
+                        <a href="https://www.linkedin.com/in/aniruddhapanda/" target="_blank" class="linkedin-link">View LinkedIn Profile</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="tpc" class="section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <div class="kicker">Committee</div>
+                        <h2>Technical Program Committee</h2>
+                    </div>
+                </div>
+                <div class="tpc-grid">
+                    <div class="tpc-card"><h3>Angshul Majumdar</h3><p>IIIT Delhi</p></div>
+                    <div class="tpc-card"><h3>Kalyan Venkata T.</h3><p>IIT Ropar</p></div>
+                    <div class="tpc-card"><h3>Suraj Pawar</h3><p>Shell</p></div>
+                    <div class="tpc-card"><h3>Saumil Merchant</h3><p>Shell</p></div>
+                    <div class="tpc-card"><h3>Sumit Kumar Mondal</h3><p>IISc</p></div>
+                    <div class="tpc-card"><h3>Debiprasanna Sahoo</h3><p>IIT Bhubaneswar</p></div>
+                    <div class="tpc-card"><h3>Sheel Sindhu Manohar</h3><p>Shiv Nadar University</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="program" class="section">
+            <div class="container">
+                <div class="section-card program-card">
+                    <div>
+                        <div class="kicker">Program</div>
+                        <h2>Workshop Program</h2>
+                    </div>
+                    <div class="tbd-pill">TBD</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advprog" class="section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <div class="kicker">Advanced Program</div>
+                        <h2>Advanced Program</h2>
+                    </div>
+                </div>
+                <article class="keynote-card glass-card">
+                    <a href="https://www.linkedin.com/in/anto-ajay-raj-john-4692a517/" class="image" target="_blank"><img src="images/anto_image.jpg" alt="" /></a>
+                    <div>
+                        <h3>Keynote Speaker</h3>
+                        <a href="https://www.linkedin.com/in/anto-ajay-raj-john-4692a517/" target="_blank" class="keynote-name">Anto Ajay Raj John, Senior Manager, IBM</a>
+                        <p>Brief Bio: : Anto John is a senior manager for AI on IBM Z. He has spent more that 20 years in industry: leading engineering, product management teams. He has been working on AI projects for the past 10 years in various capacity. He was one of the core team members of the IBM BlueGene/Q supercomputer. He was the performance architect for IBM Power Systems for AI with Nvidia GPUs. He is currently managing a team, working towards the next-generation Spyre AI stack for IBM Z and Power. He is also a senior inventor with 16 granted patents.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-title">AI for Scientific and General Purpose Computing (AI-SPC)</div>
+                <p>3rd Workshop on AI-SPC @ HiPC 2026</p>
+            </div>
+            <div class="social-labels">
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
