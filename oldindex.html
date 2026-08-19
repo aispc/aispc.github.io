@@ -1,0 +1,1009 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>AI for Scientific and General Purpose Computing (AI-SPC)</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			.timeline-container {
+				margin: 15px 0;
+			}
+			
+			.timeline {
+				position: relative;
+				padding-left: 30px;
+			}
+			
+			.timeline-item {
+				position: relative;
+				margin-bottom: 20px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+			}
+			
+			.timeline-item:hover {
+				transform: translateX(5px);
+			}
+			
+			.timeline-item:hover .timeline-details {
+				opacity: 1;
+				max-height: 50px;
+			}
+			
+			.timeline-marker {
+				position: absolute;
+				left: -37px;
+				top: 5px;
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background: #f56565;
+				border: 3px solid #fff;
+				box-shadow: 0 0 0 3px #f56565;
+				transition: all 0.3s ease;
+			}
+			
+			.timeline-marker.active {
+				background: #48bb78;
+				box-shadow: 0 0 0 3px #48bb78;
+				animation: pulse 2s infinite;
+			}
+			
+			.timeline-item:hover .timeline-marker {
+				transform: scale(1.3);
+				box-shadow: 0 0 0 6px rgba(245, 101, 101, 0.3);
+			}
+			
+			.timeline-content h4 {
+				margin: 0 0 3px 0;
+				color: #2d3748;
+				font-size: 1.1em;
+				font-weight: bold;
+			}
+			
+			.timeline-content p {
+				margin: 0 0 3px 0;
+				color: #4a5568;
+				font-weight: 600;
+			}
+			
+			.timeline-details {
+				color: #718096;
+				font-size: 0.9em;
+				opacity: 0;
+				max-height: 0;
+				overflow: hidden;
+				transition: all 0.3s ease;
+			}
+			
+			@keyframes pulse {
+				0% {
+					box-shadow: 0 0 0 3px #48bb78;
+				}
+				50% {
+					box-shadow: 0 0 0 6px rgba(72, 187, 120, 0.5);
+				}
+				100% {
+					box-shadow: 0 0 0 3px #48bb78;
+				}
+			}
+			
+			@media (max-width: 768px) {
+				.timeline {
+					padding-left: 25px;
+				}
+				
+				.timeline-marker {
+					left: -32px;
+				}
+			}
+			
+			.program-chairs-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 30px;
+				margin-top: 20px;
+			}
+			
+			.chair-card {
+				background: #fff;
+				border-radius: 10px;
+				padding: 25px;
+				text-align: center;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+				transition: all 0.3s ease;
+				border: 1px solid #e2e8f0;
+			}
+			
+			.chair-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+			}
+			
+			.chair-photo {
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				object-fit: cover;
+				margin: 0 auto 15px;
+				border: 4px solid #f56565;
+				transition: all 0.3s ease;
+			}
+			
+			.chair-card:hover .chair-photo {
+				border-color: #ed8936;
+				transform: scale(1.05);
+			}
+			
+			.chair-name {
+				font-size: 1.3em;
+				font-weight: bold;
+				color: #2d3748;
+				margin: 10px 0 5px 0;
+				line-height: 1.2;
+			}
+			
+			.chair-org {
+				color: #4a5568;
+				font-size: 1em;
+				margin-bottom: 15px;
+			}
+			
+			.chair-linkedin {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				color: #0077b5;
+				text-decoration: none;
+				font-size: 0.9em;
+				transition: color 0.3s ease;
+			}
+			
+			.chair-linkedin:hover {
+				color: #005885;
+				text-decoration: none;
+			}
+			
+			@media (max-width: 768px) {
+				.program-chairs-grid {
+					grid-template-columns: 1fr;
+					gap: 20px;
+				}
+				
+				.chair-card {
+					padding: 20px;
+				}
+			}
+			
+			/* Modern Floating Card Navigation */
+			.nav-container {
+				display: flex;
+				justify-content: center;
+				gap: 8px;
+				margin: 30px 0;
+				flex-wrap: wrap;
+				padding: 0 20px;
+			}
+			
+			.nav-dropdown {
+				position: relative;
+				display: inline-block;
+			}
+			
+			.nav-button {
+				background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+				border: none;
+				color: #4a5568;
+				padding: 16px 28px;
+				text-decoration: none;
+				font-weight: 500;
+				font-size: 0.95em;
+				letter-spacing: 0.025em;
+				transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				white-space: nowrap;
+				border-radius: 12px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
+				position: relative;
+				overflow: hidden;
+				z-index: 1;
+			}
+			
+			.nav-button > * {
+				position: relative;
+				z-index: 2;
+			}
+			
+			.nav-button::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+				transition: left 0.6s ease;
+				z-index: 1;
+			}
+			
+			.nav-button:hover::before {
+				left: 100%;
+			}
+			
+			.nav-button:hover, .nav-dropdown:hover .nav-button {
+				background: linear-gradient(135deg, #dc3545 0%, #e85a4f 100%);
+				color: #ffffff;
+				text-decoration: none;
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15);
+				text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+			}
+			
+			.nav-dropdown-arrow {
+				font-size: 0.75em;
+				transition: all 0.4s ease;
+				opacity: 0.7;
+			}
+			
+			.nav-dropdown:hover .nav-dropdown-arrow {
+				transform: rotate(180deg);
+				opacity: 1;
+			}
+			
+			.nav-dropdown-content {
+				display: none;
+				position: absolute;
+				top: calc(100% + 4px);
+				left: 50%;
+				transform: translateX(-50%);
+				min-width: 220px;
+				background: #ffffff;
+				border: none;
+				border-radius: 12px;
+				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+				z-index: 1000;
+				overflow: hidden;
+				opacity: 0;
+				animation: dropdownFadeIn 0.3s ease forwards;
+				padding-top: 4px;
+			}
+			
+			.nav-dropdown-content::after {
+				content: '';
+				position: absolute;
+				top: -4px;
+				left: 0;
+				right: 0;
+				height: 4px;
+				background: transparent;
+			}
+			
+			
+			@keyframes dropdownFadeIn {
+				from {
+					opacity: 0;
+					transform: translateX(-50%) translateY(-10px);
+				}
+				to {
+					opacity: 1;
+					transform: translateX(-50%) translateY(0);
+				}
+			}
+			
+			.nav-dropdown-content::before {
+				content: '';
+				position: absolute;
+				top: -8px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 0;
+				height: 0;
+				border-left: 8px solid transparent;
+				border-right: 8px solid transparent;
+				border-bottom: 8px solid #ffffff;
+				filter: drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.1));
+			}
+			
+			.nav-dropdown-item {
+				display: block;
+				padding: 16px 24px;
+				color: #4a5568;
+				text-decoration: none;
+				font-size: 0.9em;
+				font-weight: 400;
+				border-bottom: 1px solid #f1f5f9;
+				transition: all 0.3s ease;
+				position: relative;
+			}
+			
+			.nav-dropdown-item:last-child {
+				border-bottom: none;
+			}
+			
+			.nav-dropdown-item::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 4px;
+				background: linear-gradient(135deg, #f56565, #ed8936);
+				transform: scaleY(0);
+				transition: transform 0.3s ease;
+			}
+			
+			.nav-dropdown-item:hover {
+				background: linear-gradient(135deg, #fef7f7 0%, #fdf4f3 100%);
+				color: #f56565;
+				text-decoration: none;
+				padding-left: 28px;
+			}
+			
+			.nav-dropdown-item:hover::before {
+				transform: scaleY(1);
+			}
+			
+			@media (max-width: 768px) {
+				.nav-container {
+					flex-direction: column;
+					align-items: center;
+					gap: 12px;
+					padding: 0 16px;
+				}
+				
+				.nav-button {
+					width: 280px;
+					justify-content: center;
+					padding: 18px 32px;
+				}
+				
+				.nav-dropdown-content {
+					position: static;
+					transform: none;
+					display: none;
+					width: 100%;
+					margin-top: 8px;
+					animation: none;
+				}
+				
+				.nav-dropdown-content::before {
+					display: none;
+				}
+				
+			}
+
+			/* Technical Program Committee Card Styles */
+			.tpc-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 20px;
+				margin-top: 30px;
+			}
+
+			.tpc-card {
+				background: #ffffff;
+				border-radius: 12px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+				transition: all 0.3s ease;
+				border: 1px solid #e2e8f0;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.tpc-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+				border-color: #f56565;
+			}
+
+			.tpc-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 4px;
+				background: linear-gradient(90deg, #f56565, #ed8936);
+				border-radius: 12px 12px 0 0;
+			}
+
+			.tpc-card-content {
+				padding: 25px;
+				text-align: center;
+			}
+
+			.tpc-card h3 {
+				margin: 0 0 8px 0;
+				color: #2d3748;
+				font-size: 1.2em;
+				font-weight: 600;
+				line-height: 1.3;
+			}
+
+			.tpc-affiliation {
+				margin: 0;
+				color: #718096;
+				font-size: 0.95em;
+				font-weight: 500;
+				font-style: normal;
+			}
+
+			@media (max-width: 768px) {
+				.tpc-grid {
+					grid-template-columns: 1fr;
+					gap: 15px;
+				}
+				
+				.tpc-card {
+					margin: 0 10px;
+				}
+				
+				.tpc-card-content {
+					padding: 20px;
+				}
+				
+				.tpc-card h3 {
+					font-size: 1.1em;
+				}
+			}
+
+			@media (max-width: 480px) {
+				.tpc-grid {
+					grid-template-columns: 1fr;
+					gap: 12px;
+				}
+				
+				.tpc-card-content {
+					padding: 18px;
+				}
+				
+				.tpc-card h3 {
+					font-size: 1em;
+				}
+			}
+
+			@keyframes flash {
+				0%, 100% { opacity: 1; }
+				50% { opacity: 0.4; }
+			}
+		</style>
+	</head>
+
+
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Deadline Extension Notice -->
+                                                        <!--
+							<div style="background-color: #ff6b6b; color: white; padding: 12px; text-align: center; font-weight: bold; margin-bottom: 20px; animation: flash 1.5s infinite;">
+								🔔 DEADLINE EXTENDED: Paper submissions now due October 15, 2025!
+							</div>
+                                                        -->
+
+							<!-- Header -->
+								<header id="header">
+									<div style="display: flex; align-items: center; border: none;">
+										<a href="index.html" style="text-decoration: none; border: none;">
+											<strong> 3rd Workshop on AI-SPC </strong> @ HiPC 2026 
+										</a>
+										<a href="https://www.hipc.org/" target="_blank" title="Visit HiPC 2026 Main Conference" style="margin-left: 10px; border: none; text-decoration: none; display: inline-block;">
+											<img src="images/hipc-logo.svg" width="90" height="30" alt="HiPC 2025 Logo" style="cursor: pointer;" />
+										</a>
+									</div>
+									
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+                                <br />
+								<div class="nav-container">
+								    <div class="nav-dropdown">
+								        <a href="#banner" class="nav-button">
+								            About <span class="nav-dropdown-arrow">‹</span>
+								        </a>
+								        <div class="nav-dropdown-content">
+								            <a href="#banner" class="nav-dropdown-item">Workshop Overview</a>
+								            <a href="#previous" class="nav-dropdown-item">Previous Edition</a>
+								        </div>
+								    </div>
+								    
+								    <a href="#cfp" class="nav-button">Call for Papers</a>
+								    
+								    <div class="nav-dropdown">
+								        <a href="#program" class="nav-button">
+								            Program <span class="nav-dropdown-arrow">‹</span>
+								        </a>
+								        <div class="nav-dropdown-content">
+								            <a href="#program" class="nav-dropdown-item">Workshop Schedule</a>
+								            <a href="#progchair" class="nav-dropdown-item">Program Chairs</a>
+								            <a href="#advprog" class="nav-dropdown-item">Keynote Speaker</a>
+								        </div>
+								    </div>
+								    
+								    <a href="#tpc" class="nav-button">Committee</a>
+							    
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h1>AI for Scientific and General Purpose Computing<br />
+											AI-SPC </h1>
+											<p> <strong> About the Workshop</strong></p>
+										</header>
+										<p> Recent advances in AI have influenced nearly all domains 
+											of science and engineering research. The spectrum is surprisingly 
+											broad: starting from traditional scientific simulation, natural 
+											language processing, material science, medical diagnostics, drug 
+											discovery and last but not the least, computer software and systems. 
+											In its second iteration, our focus remains largely in the same 
+											direction, that is, to explore the new-found synergies between 
+											High Performance Computing (HPC) and Artificial Intelligence (AI), 
+											emphasizing the advancements, challenges and future directions 
+											in two domains that have long shared symbiotic relationship - 
+											scientific computing and computer systems. Participants will 
+											engage in discussions about state-of-the art technologies, share 
+											experiences and foster collaborations to drive innovation in 
+											these interdisciplinary fields. </p>
+											<p>The goals of this workshop is to:
+												<ul>
+											    <li> Provide a platform to bring together academic researchers 
+												and industry practitioners in the areas of HPC, 
+												Software & Systems evaluating the use of AI/ML to 
+												foster dialogue and solve problems in these domains.
+											    </li>
+
+												<li>Highlight cutting-edge research and practical applications 
+												that leverage the intersection of HPC, Systems and AI.
+												</li>
+
+												<li> To provide a platform for sharing knowledge about new tools, 
+												techniques, and best practices.
+												</li>
+												
+												<li> Discuss the challenges in integrating HPC with AI and propose 
+												potential solutions.
+												</li>
+												<li>To identify future research directions and encourage collaborative 
+												efforts to advance the field.
+											    </li>
+												</ul>
+											</p>
+										<!--
+										<ul class="actions">
+											<li><a href="#" class="button big">Learn More</a></li>
+										</ul>
+									-->
+									</div>
+									
+									<span class="image object">
+										<img src="images/ai_image1.jpg" alt="" />
+									</span>
+									
+								</section>
+
+							<!-- Section -->
+								<section id="previous">
+									<header class="major">
+										<h2>Previous Edition</h2>
+									</header>
+									<p>
+										The second edition of AI-SPC workshop was successfully held at HiPC 2025. 
+										You can access the proceedings and papers from the inaugural workshop at the 
+										<a href="https://ieeexplore.ieee.org/document/11459229" target="_blank">IEEE Xplore Digital Library</a>.
+									</p>
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major" id="cfp">
+										<h2>Call for Papers</h2>
+									</header>
+									<div class="features">
+										<article>
+											<!-- <span class="icon fa-gem"></span> -->
+											<div class="content">
+												<h3>What to Submit</h3>
+												<p>
+													The workshop invites submissions (though not limited to) in the 
+													following areas: 
+													<ul>					
+													<li> State of the Art in HPC & AI Integration: Overview of current 
+													technologies and methodologies where HPC meets AI. 
+													Case studies demonstrating successful integration in scientific 
+													research and industry. </li>
+													
+													<li> HPC for AI: Accelerating Learning and Inference: Utilizing HPC 
+													to accelerate AI training and inference times. Benchmarking 
+													performance gains in AI applications through HPC. </li>
+													
+													<li> Large scale I/O and Analytics: Challenges in handling 
+													big data with HPC and AI. Techniques for efficient data storage, 
+													retrieval, and processing at scale. </li>
+
+													<li> HPC-AI for Scientific Discovery: Applications of AI for 
+													simulation and modeling in scientific domains such as computational 
+													fluid dynamics, climate modeling, astrophysics, and bioinformatics. 
+													Leveraging HPC for the larger areas of Scientific Machine Learning
+													(neural network-driven scientific research). Few such focus areas 
+													are: Physics Informed Neural Network (PINN), AI assisted Data 
+													Driven Weather Modelling. </li>
+
+													<li>Future Directions and Emerging Technologies, Hardware and Software 
+													Design Machine learning in compiler optimization, auto tuning, 
+													software & hardware performance optimization. Discussion on the 
+													upcoming trends at the nexus of HPC and AI. Anticipating future 
+													challenges and opportunities in hardware and software developments.
+                                                    </li>
+													</ul>
+
+
+												</p>
+											</div>
+										</article>
+										<article style="align-items: baseline;">
+											<!-- <span class="icon solid fa-paper-plane"></span> -->
+											<div class="content">
+												<h3>Important Dates and Submission Link</h3>
+												<div class="timeline-container">
+													<div class="timeline">
+														<div class="timeline-item" data-date="Sep 1, 2026">
+															<div class="timeline-marker"></div>
+															<div class="timeline-content">
+																<h4>Submission Site Opens</h4>
+																<p>September 1, 2026</p>
+																<div class="timeline-details">Paper submission system becomes available</div>
+															</div>
+														</div>
+														
+														<div class="timeline-item" data-date="Oct 1, 2026">
+															<div class="timeline-marker"></div>
+															<div class="timeline-content">
+																<h4>Paper Submissions Due</h4>
+																<p>October 15, 2026</p>
+																<div class="timeline-details">Final deadline for paper submissions</div>
+															</div>
+														</div>
+														
+														<div class="timeline-item" data-date="Nov 1, 2026">
+															<div class="timeline-marker"></div>
+															<div class="timeline-content">
+																<h4>Author Notification</h4>
+																<p>November 1, 2026</p>
+																<div class="timeline-details">Authors notified of acceptance status</div>
+															</div>
+														</div>
+														
+														<div class="timeline-item" data-date="Nov 8, 202'6">
+															<div class="timeline-marker"></div>
+															<div class="timeline-content">
+																<h4>Advance Program</h4>
+																<p>November 8, 2026</p>
+																<div class="timeline-details">Workshop program published</div>
+															</div>
+														</div>
+														
+														<div class="timeline-item" data-date="Nov 15, 2026">
+															<div class="timeline-marker"></div>
+															<div class="timeline-content">
+																<h4>Camera-Ready Due</h4>
+																<p>November 15, 2026</p>
+																<div class="timeline-details">Final camera-ready versions due</div>
+															</div>
+														</div>
+														
+														<div class="timeline-item" data-date="Dec 16, 2026">
+															<div class="timeline-marker active"></div>
+															<div class="timeline-content">
+																<h4>Workshop Day</h4>
+																<p>December 16, 2026</p>
+																<div class="timeline-details">AI-SPC 2026 Workshop at HiPC</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<p> <strong> Submission Guidelines: Workshop will accept unpublished manuscripts 
+													and should not be under review for a different conference / journal 
+													/ workshop. The manuscript must not exceed four (4) pages in single-
+													spaced, 10pt, double column, IEEE conference style format. One (1) additional
+													page can be added only for the References.
+													The submission should include title, author, affiliations, 
+													and email address of the communicating author. The workshop will 
+													follow single-blind review process by the Program Committee to 
+													review all submitted manuscripts. Manuscript submission details will be shared soon
+													through this website. <br />
+													For any question feel free to reach out to 
+													<a href="mailto:subhasis.banerjee@shell.com"> subhasis.banerjee@shell.com </a>
+													OR <br />
+													<a href="mailto:aniruddha.panda@shell.com"> aniruddha.panda@shell.com </a>
+												</strong>
+													
+												</p>
+											</div>
+										</article>
+									</div>
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major" id="progchair">
+										<h2>Program Chairs</h2>
+									</header>
+									<div class="program-chairs-grid">
+										<div class="chair-card">
+											<img src="images/subhasis_photo.jpg" alt="Subhasis Banerjee" class="chair-photo" />
+											<div class="chair-name">Subhasis Banerjee</div>
+											<div class="chair-org">Shell</div>
+											<a href="https://www.linkedin.com/in/subhasisbanerjee/" target="_blank" class="chair-linkedin">
+												<i class="fab fa-linkedin"></i>
+												View LinkedIn Profile
+											</a>
+										</div>
+										
+										<div class="chair-card">
+											<img src="images/Pradeep_photo.jpg" alt="Pradeep Rao" class="chair-photo" />
+											<div class="chair-name">Pradeep Rao</div>
+											<div class="chair-org">AMD</div>
+											<a href="https://www.linkedin.com/in/hprao/" target="_blank" class="chair-linkedin">
+												<i class="fab fa-linkedin"></i>
+												View LinkedIn Profile
+											</a>
+										</div>
+										
+										<div class="chair-card">
+											<img src="images/Aniruddha_photo.jpg" alt="Aniruddha Panda" class="chair-photo" />
+											<div class="chair-name">Aniruddha Panda</div>
+											<div class="chair-org">Shell</div>
+											<a href="https://www.linkedin.com/in/aniruddhapanda/" target="_blank" class="chair-linkedin">
+												<i class="fab fa-linkedin"></i>
+												View LinkedIn Profile
+											</a>
+										</div>
+									</div>
+								</section>
+								<section>
+									<header class="major" id="tpc"><h2> Technical Program Committee</h2>
+									</header>
+									<div class="tpc-grid">
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Angshul Majumdar</h3>
+												<p class="tpc-affiliation">IIIT Delhi</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Kalyan Venkata T.</h3>
+												<p class="tpc-affiliation">IIT Ropar</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Suraj Pawar</h3>
+												<p class="tpc-affiliation">Shell</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Ramachandran Arun Coimbatore</h3>
+												<p class="tpc-affiliation">AMD</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Saumil Merchant</h3>
+												<p class="tpc-affiliation">Shell</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Sumit Kumar Mondal</h3>
+												<p class="tpc-affiliation">IISc</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Debiprasanna Sahoo</h3>
+												<p class="tpc-affiliation">IIT Bhubaneswar</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Sheel Sindhu Manohar</h3>
+												<p class="tpc-affiliation">Shiv Nadar University</p>
+											</div>
+										</div>
+										<div class="tpc-card">
+											<div class="tpc-card-content">
+												<h3>Gnanabaskaran Muthumani</h3>
+												<p class="tpc-affiliation">AMD</p>
+											</div>
+										</div>
+									</div>
+								</section>
+
+							<!-- Section -->
+								<section id="program">
+									<header class="major">
+										<h2>Workshop Program</h2>
+										TBD
+									</header>
+							<!-- 											
+									<div class="table-wrapper">
+										<table style="width:80%">
+											<thead>
+												<tr>
+													<th width=15% >Time </th>
+													<th>Session </th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+                                                                                                        <td>02:00 - 02:05 PM </td>
+													<td>Introduction / Opening Remarks</td>
+													
+												</tr>
+												<tr>
+                                                                                                        <td>02:05 - 02:50 PM </td>
+													<td>Keynote: “Large Language Models: Algorithms to Hardware” 
+                                                                                                            by Prof. <b> Sumit Kumar Mandal, Computer Science and Automation, 
+                                                                                                            Indian Institute of Science </b> </td>													
+												</tr>
+												<tr>
+                                                                                                        <td> 02:50 - 03:10 PM </td>
+													<td> Paper – 1: “Enabling Distributed Deep Learning frameworks on 
+                                                                                                             Trinetra-A Network”  by <b> Shruti Sharma, Rakesh Kumar Yadav, 
+                                                                                                             Yogeshwar Sonawane, Sanjay Wandheka </b> </td>
+													
+												</tr>
+                                                                                                <tr>
+                                                                                                        <td> 03:10 - 03:30 PM </td>
+													<td> Paper – 2: “PEEP: A Tool for PErformance Effect Prediction” 
+                                                                                                             by <b> G Ramya Sri, Debiprasanna Sahoo, Ajaya Kumar Das </b> </td>
+													
+												</tr>
+                                                                                                <tr>
+                                                                                                        <td> 03:30 - 03:55 PM </td>
+													<td> Invited talk:  “Opportunities and Challenges for AI in Chemistry: 
+                                                                                                             Transfer Learning for materials screening” by <b> Kaustubh Kaluskar, 
+                                                                                                             Senior Researcher, Shell <b> </td>
+													
+												</tr>
+
+              											<tr>
+													<td>04:00 - 04:30 PM </td>
+													<td>Break </td>
+												</tr>
+                                                                                                <tr>
+                                                                                                        <td> 04:30 - 05:00 PM </td>
+													<td> Invited talk: "Challenges and Progress 
+                                                                                                             in Dynamic Parallel Graph Algorithms" by <b> Kishore Kothapalli </b> </td>
+													
+												</tr>
+
+												<tr>
+
+													<td>05:00 - 05:20 PM </td>
+													<td> Paper 3: “Efficient AI-driven Subsurface Modelling: A Case
+                                                                                                             Study on Scaling and Optimization” by <b> Mitali Sinha, Yogesh Nakhate, 
+                                                                                                             S. Ahmad Zamanian  </b> </td>
+												</tr>
+												<tr>
+													<td>05:20 - 06:05 PM </td>
+													<td>Panel Discussion: <b> "Evolution or Revolution 
+                                                                                                            of Skills in Post-AI Era: 
+                                                                                                            Are Science and Engineering Fundamental 
+                                                                                                            Skills Fading?" Panelists: Sumit Kumar Mangal (IISc), Chiranjib Sur (Shell), Kalyan Venkata T (IIT-Ropar), Saurabh Gupta (AMD), Moderator: Subhasis Banerjee (Shell) </b> </td>
+												</tr>
+												<tr>
+													<td>06:05 - 06:15 PM </td>
+													<td> Close Out </td>
+												</tr>
+                                                                                          <!--
+												<tr style="font-weight: bold;">
+													<td>Total Workshop Duration</td>
+													<td>215 min (approx. 3.5 hours)</td>
+												</tr>
+                                                                                          -->
+
+											</tbody>
+										</table>
+									</div>
+							-->
+								</section>
+                                                
+								<section>
+									<header class="major" id="advprog"><h2> Advanced Program</h2>
+									</header>
+									<div>
+										<article>
+											<h3>Keynote Speaker	</h3>
+											<a href="https://www.linkedin.com/in/anto-ajay-raj-john-4692a517/" class="image" target="_blank"><img src="images/anto_image.jpg" width="35%" height="auto" alt="" /></a>
+											<a href="https://www.linkedin.com/in/anto-ajay-raj-john-4692a517/"  target="_blank"> 
+											<h3>Anto Ajay Raj John, Senior Manager, IBM </h3> </a>
+										</article>
+										<article>Brief Bio: : Anto John is a senior manager for AI on IBM Z. 
+							                     He has spent more that 20 years in industry: leading engineering, 
+							                     product management teams. He has been working on AI projects 
+							                     for the past 10 years in various capacity. He was one of the core 
+							                     team members of the IBM BlueGene/Q supercomputer. He was the 
+							                     performance architect for IBM Power Systems for AI with Nvidia GPUs. 
+							                     He is currently managing a team, working towards the next-generation 
+							                     Spyre AI stack for IBM Z and Power. He is also a senior inventor with 
+							                     16 granted patents.
+										</article>
+										<br />
+										
+									</div>
+									
+								</section>
+                		</div>
+					</div>
+                
+				
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			
+			<!-- Dropdown Hover Enhancement -->
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					const dropdowns = document.querySelectorAll('.nav-dropdown');
+					
+					dropdowns.forEach(dropdown => {
+						let timeout;
+						
+						const showDropdown = () => {
+							clearTimeout(timeout);
+							const content = dropdown.querySelector('.nav-dropdown-content');
+							if (content) {
+								content.style.display = 'block';
+							}
+						};
+						
+						const hideDropdown = () => {
+							timeout = setTimeout(() => {
+								const content = dropdown.querySelector('.nav-dropdown-content');
+								if (content) {
+									content.style.display = 'none';
+								}
+							}, 300); // 300ms delay before hiding
+						};
+						
+						// Show on button hover
+						dropdown.addEventListener('mouseenter', showDropdown);
+						
+						// Hide when leaving both button and dropdown
+						dropdown.addEventListener('mouseleave', hideDropdown);
+						
+						// Keep dropdown open when hovering over dropdown content
+						const content = dropdown.querySelector('.nav-dropdown-content');
+						if (content) {
+							content.addEventListener('mouseenter', showDropdown);
+							content.addEventListener('mouseleave', hideDropdown);
+						}
+					});
+				});
+			</script>
+
+	</body>
+</html>
